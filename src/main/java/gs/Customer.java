@@ -1,19 +1,19 @@
-package hello;
+package gs;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document
 public class Customer {
 
     @Id
     public String id;
 
-    @Version
-    public long version; // TODO: should be null ? long or not long ?
-
     public String firstName;
     public String lastName;
+
+    @Version Long version;
 
     public Customer() {}
 
