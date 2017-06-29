@@ -7,16 +7,17 @@ package gs;
  * http://www.baeldung.com/spring-data-mongodb-tutorial
  * https://docs.spring.io/spring-data/data-mongo/docs/current/reference/html/
  *
+ * mongo client: https://github.com/mongoclient/mongoclient/releases/tag/2.1.0
+ *
  * ? continuous delivery ?
  * ? rollback several changes ?
  */
 
+import gs.utils.TestNameLogger;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,12 +39,7 @@ public class CustomerRepositoryTests {
     Customer luke, han, annakin;
 
     @Rule
-    public TestRule watcher = new TestWatcher() {
-        protected void starting(Description description) {
-            // TODO use LOGGER
-            System.out.println("> " + description.getClassName() + "." + description.getMethodName() + "()");
-        }
-    };
+    public TestRule logTestNames = new TestNameLogger();
 
     @Before
     public void setUp() {
